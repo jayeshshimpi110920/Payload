@@ -11,7 +11,7 @@
 </CertEnrollmentRequest>
 ```
 
-Just for refrence where accept the XMl ;
+Just for refrence where accept the XMl =>  vulnerability occurs because the XML parser resolves external entities without proper restrictions
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <stockCheck>
@@ -28,3 +28,12 @@ Converted to THis ---|>
   <storeId>1</storeId>
 </stockCheck>
 ```
+--------------------------------------------------------------
+
+
+
+
+
+
+
+
